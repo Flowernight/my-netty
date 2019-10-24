@@ -1,5 +1,7 @@
 package the.flash.algorithm;
 
+import java.util.Arrays;
+
 /**
  * Created by xulh on 2019/10/23.
  */
@@ -11,7 +13,7 @@ public class MergeSort {
         MergeSort sort = new MergeSort();
         sort.mergeSort(arr, 0, arr.length);
 
-        System.out.println("排序后");
+        System.out.println("排序后,arr="+ Arrays.toString(arr));
     }
 
     /**
