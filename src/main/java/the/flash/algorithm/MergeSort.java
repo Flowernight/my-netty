@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 /**
  * Created by xulh on 2019/10/23.
+ * 归并排序: 分为拆分和合并两步
+ * 将数组不断的对半分成两份,直到每份只有一个元素；
+ * 不断的对两个素组进行合并,将数组A的每个元素和B数组进行比较,将2个数组里的数据按顺序放入临时数组temp
  */
 public class MergeSort {
 
@@ -11,7 +14,7 @@ public class MergeSort {
 
         int[] arr = {54,23,67,1,45,2,34,2,43,2,35,3};
         MergeSort sort = new MergeSort();
-        sort.mergeSort(arr, 0, arr.length);
+        sort.mergeSort(arr, 0, arr.length-1);
 
         System.out.println("排序后,arr="+ Arrays.toString(arr));
     }
@@ -24,10 +27,10 @@ public class MergeSort {
      */
     public void mergeSort(int[] arr, int left, int right){
         if(left < right){
-            int mid = (right - left)/2;
-            mergeSort(arr,0, mid);
-            mergeSort(arr, mid+1, right);
-            merge(arr, left, mid, right);
+            int mid = (right + left)/2;
+            mergeSort(arr,left, mid);//继续拆分左边的数组
+            mergeSort(arr, mid+1, right);//拆分右边的数组
+            merge(arr, left, mid, right);//归并
         }
     }
 
