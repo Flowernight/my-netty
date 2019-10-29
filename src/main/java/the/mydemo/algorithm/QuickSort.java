@@ -1,4 +1,4 @@
-package the.flash.algorithm;
+package the.mydemo.algorithm;
 
 import java.util.Arrays;
 

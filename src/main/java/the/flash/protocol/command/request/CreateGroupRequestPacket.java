@@ -4,17 +4,18 @@ import lombok.Data;
 import the.flash.protocol.command.Command;
 import the.flash.protocol.command.Packet;
 
+import java.util.List;
+
 /**
- * Created by xulh on 2019/10/14.
+ * Created by xulh on 2019/10/29.
  */
 @Data
-public class MessageRequestPacket extends Packet {
+public class CreateGroupRequestPacket extends Packet {
 
-    private String toUserId;
-    private String message;
+    private List<String> userIdList;
 
     @Override
     public Byte getCommand() {
-        return Command.MESSAGE_REQUEST;
+        return Command.CREATE_GROUP_REQUEST;
     }
 }

@@ -1,4 +1,4 @@
-package the.flash.algorithm;
+package the.mydemo.algorithm;
 
 /**
  * 8皇后问题

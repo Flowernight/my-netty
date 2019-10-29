@@ -7,6 +7,12 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.AttributeKey;
+import the.flash.codec.PacketDecoder;
+import the.flash.codec.Spliter;
+import the.flash.server.handler.AuthHandler;
+import the.flash.server.handler.CreateGroupRequestHandler;
+import the.flash.server.handler.LoginRequestHandler;
+import the.flash.server.handler.MessageRequestHandler;
 
 /**
  * Created by xulh on 2019/10/12.
@@ -31,7 +37,13 @@ public class NettyServer {
                 .childOption(ChannelOption.TCP_NODELAY,true)
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     protected void initChannel(NioSocketChannel ch){
-//                        ch.pipeline().addLast(new FirstServerHandler());
+                        ch.pipeline().addLast(new Spliter());
+                        ch.pipeline().addLast(new PacketDecoder());
+                        ch.pipeline().addLast(new LoginRequestHandler());
+                        ch.pipeline().addLast(new AuthHandler());
+                        ch.pipeline().addLast(new MessageRequestHandler());
+                        ch.pipeline().addLast(new CreateGroupRequestHandler());
+
                         ch.pipeline().addLast(new ServerHandler());
                     }
 
